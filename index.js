@@ -17,12 +17,12 @@ const questions = () => {
         {
             name: 'title',
             type: 'input',
-            message: 'What is the name of your project? (required)',
+            message: 'What is the title of your project? (required)',
             validate: nameInput => {
                 if (nameInput) {
                     return true;
                 } else {
-                    console.log('Please enter a project name!');
+                    console.log('Please enter a project title!');
                     return false;
                 }
             }
@@ -67,34 +67,8 @@ const questions = () => {
         {
             type: 'confirm',
             name: 'tests',
-            message: 'Include a Test section?',
+            message: 'Include a test section?',
             default: true,
-        },
-        {
-            name: 'link',
-            type: 'input',
-            message: 'Enter GitHub link to project. (required)',
-            validate: linkInput => {
-                if (linkInput) {
-                    return true;
-                } else {
-                    console.log('Please enter the GitHub link!');
-                    return false;
-                }
-            }
-        },
-        {
-            name: 'name',
-            type: 'input',
-            message: 'What your name? (required)',
-            validate: input => {
-                if (input) {
-                    return true;
-                } else {
-                    console.log('Item required!');
-                    return false;
-                }
-            }
         },
         {
             name: 'github',
@@ -108,17 +82,59 @@ const questions = () => {
                     return false;
                 }
             }
-        }
+        },
+        {
+            name: 'email',
+            type: 'input',
+            message: 'What is the contact email address? (required)',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Item required!');
+                    return false;
+                }
+            }
+        },
+
     ]);
 };
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName,data,err => {
+        if (err) {
+            throw new Error(err);
+            console.log(err);
+            return;
+        }
+        console.log('Page created! Check out index.html in this directory');
+    });
+}
 
 // TODO: Create a function to initialize app
 function init() {
-    questions();
-}
-
+    questions()
+    .then(answers => {
+        console.log(answers);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+};
+//MOCK DATA.......
+let mockData = {
+    title: 'This is Title',
+    description: 'This is a description.',
+    installation: [ 'npm' ],
+    languages: [ 'javaScript', 'ES6' ],
+    license: [ 'MIT' ],
+    contributions: true,
+    tests: true,
+    github: 'rolanduwxcc',
+    email: 'rolanduwxcc@gmail.com'
+  };
 // Function call to initialize app
-init();
+// init();
+const output = generateMarkdown(mockData);
+writeToFile('./test.txt',output);
