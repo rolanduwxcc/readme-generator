@@ -1,0 +1,23 @@
+{
+  "name": "readme-generator",
+  "version": "1.0.0",
+  "description": "README.md generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rolanduwxcc/readme-generator.git"
+  },
+  "keywords": [
+    "node",
+    "README.md"
+  ],
+  "author": "Warren Rowland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rolanduwxcc/readme-generator/issues"
+  },
+  "homepage": "https://github.com/rolanduwxcc/readme-generator#readme"
+}
