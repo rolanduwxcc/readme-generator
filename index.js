@@ -15,6 +15,19 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 const questions = () => {
     return inquirer.prompt([
         {
+            name: 'name',
+            type: 'input',
+            message: 'What is your name? (required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Enter name, please.');
+                    return false;
+                }
+            }
+        },
+        {
             name: 'title',
             type: 'input',
             message: 'What is the title of your project? (required)',
@@ -95,8 +108,7 @@ const questions = () => {
                     return false;
                 }
             }
-        },
-
+        }
     ]);
 };
 
@@ -124,6 +136,7 @@ function init() {
 };
 //MOCK DATA.......
 let mockData = {
+    name: 'Warren Rowland',
     title: 'This is Title',
     description: 'This is a description.',
     installation: [ 'npm' ],
@@ -132,9 +145,10 @@ let mockData = {
     contributions: true,
     tests: true,
     github: 'rolanduwxcc',
-    email: 'rolanduwxcc@gmail.com'
+    email: 'rolanduwxcc@gmail.com',
+    date: '2020'
   };
 // Function call to initialize app
 // init();
 const output = generateMarkdown(mockData);
-writeToFile('./test.txt',output);
+writeToFile('./README.md',output);

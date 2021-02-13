@@ -4,9 +4,7 @@ function renderLicenseBadge(license) {
   if (!license) {
     return '';
   }
-  return `
-    #License Badger!
-  `;
+  return `* License Badger!`;
 }
 
 // TODO: Create a function that returns the license link
@@ -15,9 +13,7 @@ function renderLicenseLink(license) {
     if (!license) {
       return '';
     }
-    return `
-      #License Link!
-    `;
+    return `* License Link!`;
 }
 
 // TODO: Create a function that returns the license section of README
@@ -27,23 +23,39 @@ function renderLicenseSection(license) {
     return '';
   }
   return `
-    #License Section
-    ${renderLicenseBadge(license)}
-    ${renderLicenseLink(license)}
-  `;
+## License Section
+${renderLicenseBadge(license)}
+${renderLicenseLink(license)}
+`;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
-    * ${data.description}
-    * ${data.installation}
-    * ${data.languages}
-    * ${data.license}
-    * ${data.contributions}
-    * ${data.tests}
-    * ${data.github}
-    * ${data.email}
+  let currentYear = Date.getYear();
+return `
+# ${data.title}
+
+## Description
+* ${data.description}
+
+## Install with
+* ${data.installation}
+
+## Built with
+* ${data.languages}
+
+${renderLicenseSection(data.license)}
+
+## Contributions
+* ${data.contributions}
+
+## Contact Info
+* ${data.name}, find me on [GitHub](https://github.com/${data.github}) or email me at ${data.email}
+  
+## Screenshots/Tests
+* ${data.tests}
+
+### ©️${currentYear} ${data.github}, Inc
   `;
 }
 
