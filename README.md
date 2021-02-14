@@ -7,6 +7,7 @@
 
 ## Install & Run with
 * node index.js
+* The newly created file can be found in './dist/README.md' directory
 
 ## Built with
 * JavaScript (ES6)
@@ -17,7 +18,7 @@
 * W Rowland => find me on [GitHub](https://github.com/rolanduwxcc) or email me at rolanduwxcc@gmail.com
   
 ## Screenshots/Tests
-* <insert image and giphy link>
+![readme-generator](assets/img/readmeMd-generator.gif)
 
 ## License & Copyrights
 * Licensed under the [MIT License]('LICENSE')

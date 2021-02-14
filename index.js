@@ -155,7 +155,12 @@ function writeToFile(fileName, data) {
             console.log(err);
             return;
         }
-        console.log('Page created! Check out index.html in this directory');
+        console.log(`
+    README.md created! 
+    Check it out here => ${fileName}
+
+        `
+        );
     });
 }
 
@@ -180,30 +185,32 @@ function init() {
         console.log(err);
     });
 };
-function test() {
-    //MOCK DATA and testing if making changes.
-    //Build out the answer object to feed to the markdown generator
-    let mockData = {
-        name: 'Warren Rowland',
-        title: 'Run Buddies',
-        description: 'An app to help you run better!',
-        installation: [ 'GitHub Pages Link' ],
-        languages: [ 'HTML', 'CSS' ],
-        license: [ 'MIT' ],
-        contributions: true,
-        tests: true,
-        github: 'rolanduwxcc',
-        email: 'rolanduwxcc@gmail.com',
-        date: '2020'
-    };
-    const output = generateMarkdown(mockData);
-    writeToFile('./READMEexample.md',output);
-};
 
-// //Function call to test app
-// //Uncomment this call and comment the init() call below to test changes
+
+// //Function to use for testing application.
+// //Uncomment the function and the call of this function
+// //----Make sure to comment out the init() call below to test changes
+// function test() {
+//     //MOCK DATA for testing if making lots of changes.
+//     //Build out an answer object to feed to the markdown generator.
+//     let mockData = {
+//         name: 'Warren Rowland',
+//         title: 'Run Buddies',
+//         description: 'An app to help you run better!',
+//         installation: [ 'GitHub Pages Link' ],
+//         languages: [ 'HTML', 'CSS' ],
+//         license: [ 'MIT' ],
+//         contributions: true,
+//         tests: true,
+//         github: 'rolanduwxcc',
+//         email: 'rolanduwxcc@gmail.com',
+//         date: '2020'
+//     };
+//     const output = generateMarkdown(mockData);
+//     writeToFile('./READMEexample.md',output);
+// };
 // test();
 
-// Function call to initialize app
+// Function call to initialize/run app
 init();
 

@@ -42,7 +42,6 @@ function renderTestingSection(tests) {
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   let date = new Date();
-  console.log(date);
 
 return `
 # ${data.title}
