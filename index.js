@@ -151,4 +151,4 @@ let mockData = {
 // Function call to initialize app
 // init();
 const output = generateMarkdown(mockData);
-writeToFile('./README.md',output);
+writeToFile('./READMEexample.md',output);
