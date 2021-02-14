@@ -1,30 +1,25 @@
 
-# README.md Generator
+# [README.md](README.md) Generator
+![GitHub](https://img.shields.io/badge/License-MIT-blue)
 
 ## Description
-* This application automates creation of a Readme.md for a programming project.
+* App to automate creation of a README markdown file.
 
-## Install with
-* npm
+## Install & Run with
+* node index.js
 
 ## Built with
 * JavaScript (ES6)
+* [Inquirer](https://www.npmjs.com/package/inquirer#examples)
+* [Node.js](https://nodejs.org/en/)
 
-## Contributions
-* W Rowland
-
-## Contact Info
-* W Rowland, find me on [GitHub](https://github.com/rolanduwxcc) or email me at rolanduwxcc@gmail.com
+## Contributions & Contact Info
+* W Rowland => find me on [GitHub](https://github.com/rolanduwxcc) or email me at rolanduwxcc@gmail.com
   
 ## Screenshots/Tests
-* true
+* <insert image and giphy link>
 
-## License Section
-* MIT - MIT https://img.shields.io/badge/MIT-Github-blue
-* License Link!MIT
-MIT
-Github
-Github
-
-### ©️2021 rolanduwxcc, Inc
+## License & Copyrights
+* Licensed under the [MIT License]('LICENSE')
+* ©️2021 rolanduwxcc, Inc
   

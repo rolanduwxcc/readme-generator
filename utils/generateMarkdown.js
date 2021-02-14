@@ -4,9 +4,7 @@ function renderLicenseBadge(license) {
   if (!license) {
     return '';
   }
-  return `![GitHub](https://img.shields.io/github/license/rolanduwxcc/readme-generator?color=blue&label=${license}&label2='WWW')
-  `;
-
+  return `![GitHub](https://img.shields.io/badge/License-${license}-blue)`;
 }
 
 // TODO: Create a function that returns the license link
@@ -48,16 +46,15 @@ return `
 ## Built with
 * ${data.languages}
 
-${renderLicenseSection(data.license)}
-
-## Contributions
-* ${data.contributions}
-
-## Contact Info
-* ${data.name}, find me on [GitHub](https://github.com/${data.github}) or email me at ${data.email}
+## Contributions & Contact Info
+${data.name}
+* Find me on [GitHub](https://github.com/${data.github})
+* Email me at ${data.email}
   
 ## Screenshots/Tests
 * ${data.tests}
+
+${renderLicenseSection(data.license)}
 
 ### ©️${date.getFullYear()} ${data.github}, Inc
   `;

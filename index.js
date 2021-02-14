@@ -55,9 +55,16 @@ const questions = () => {
         },
         {
             name: 'installation',
-            type: "checkbox",
-            message: 'How do you install the application?',
-            choices: ['npm', 'GitHub Pages', 'other'],
+            type: "input",
+            message: 'How do you install your application?',
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Please enter installation instructiosn!');
+                    return false;
+                }
+            }
         },
         {
             name: 'languages',
@@ -140,7 +147,7 @@ let mockData = {
     title: 'This is Title',
     description: 'This is a description.',
     installation: [ 'npm' ],
-    languages: [ 'javaScript', 'ES6' ],
+    languages: [ 'JavaScript', 'ES6' ],
     license: [ 'MIT' ],
     contributions: true,
     tests: true,
