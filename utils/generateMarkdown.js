@@ -4,7 +4,9 @@ function renderLicenseBadge(license) {
   if (!license) {
     return '';
   }
-  return `* License Badger!`;
+  return `![GitHub](https://img.shields.io/github/license/rolanduwxcc/readme-generator?color=blue&label=${license}&label2='WWW')
+  `;
+
 }
 
 // TODO: Create a function that returns the license link
@@ -13,7 +15,7 @@ function renderLicenseLink(license) {
     if (!license) {
       return '';
     }
-    return `* License Link!`;
+    return `* Licensed under the [${license} License]('LICENSE')`;
 }
 
 // TODO: Create a function that returns the license section of README
@@ -23,7 +25,7 @@ function renderLicenseSection(license) {
     return '';
   }
   return `
-## License Section
+## License & copyright
 ${renderLicenseBadge(license)}
 ${renderLicenseLink(license)}
 `;
