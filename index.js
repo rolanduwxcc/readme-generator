@@ -101,7 +101,7 @@ const questions = () => {
         },
         {
             type: 'confirm',
-            name: 'confirmTests',
+            name: 'tests',
             message: 'Include a test/screenshot section?',
             default: true,
         },

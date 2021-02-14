@@ -34,7 +34,6 @@ function renderTestingSection(tests) {
   }
   return `
 ## Screenshots/Tests
-* ${data.tests}
 * INSERT SCREENSHOTS & LINKS TO VIDEOS
 `
 }
