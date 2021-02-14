@@ -15,19 +15,6 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 const questions = () => {
     return inquirer.prompt([
         {
-            name: 'name',
-            type: 'input',
-            message: 'What is your name? (required)',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Enter name, please.');
-                    return false;
-                }
-            }
-        },
-        {
             name: 'title',
             type: 'input',
             message: 'What is the title of your project? (required)',
@@ -61,7 +48,7 @@ const questions = () => {
                 if (input) {
                     return true;
                 } else {
-                    console.log('Please enter installation instructiosn!');
+                    console.log('Please enter installation instructions!');
                     return false;
                 }
             }
@@ -70,25 +57,66 @@ const questions = () => {
             name: 'languages',
             type: 'checkbox',
             message: 'What technologies were used? (Check all that apply)',
-            choices: ['html', 'css', 'javaScript', 'ES6', 'node', 'bootstrap'],
+            choices: ['html ', 'css ', 'javaScript ', 'ES6 ', 'node ', 'bootstrap ','other '],
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Please select at least one technology!');
+                    return false;
+                }
+            }
         },
         {            
             name: 'license',
             type: "checkbox",
             message: 'What is the license type?',
-            choices: ['PD/CC0', 'MIT', 'Apache','MPL','GPL','AGPL','other']
+            choices: ['PD/CC0', 'MIT', 'Apache','MPL','GPL','AGPL','other'],
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Please select a license type!');
+                    return false;
+                }
+            }
         },
         {
             type: 'confirm',
+            name: 'confirmContributions',
+            message: 'Are contributions from others welcomed?',
+            default: false,
+        },
+        {
+            type: 'input',
             name: 'contributions',
-            message: 'Are contributions allowed?',
-            default: true,
+            message: 'How can others help out?',
+            when: ({ confirmContributions }) => {
+                if (confirmContributions) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         },
         {
             type: 'confirm',
-            name: 'tests',
-            message: 'Include a test section?',
+            name: 'confirmTests',
+            message: 'Include a test/screenshot section?',
             default: true,
+        },
+        {
+            name: 'name',
+            type: 'input',
+            message: 'What is your name? (required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Enter name, please.');
+                    return false;
+                }
+            }
         },
         {
             name: 'github',
@@ -133,29 +161,49 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
+    console.log(`
+    ===================
+    README.md Generator
+    ===================
+
+    Please answer a few questions.
+
+    `);
     questions()
     .then(answers => {
-        console.log(answers);
+        return generateMarkdown(answers);
+    })
+    . then(dataToWrite => {
+        writeToFile('./dist/README.md',dataToWrite);
     })
     .catch(err => {
         console.log(err);
     });
 };
-//MOCK DATA.......
-let mockData = {
-    name: 'Warren Rowland',
-    title: 'This is Title',
-    description: 'This is a description.',
-    installation: [ 'npm' ],
-    languages: [ 'JavaScript', 'ES6' ],
-    license: [ 'MIT' ],
-    contributions: true,
-    tests: true,
-    github: 'rolanduwxcc',
-    email: 'rolanduwxcc@gmail.com',
-    date: '2020'
-  };
+function test() {
+    //MOCK DATA and testing if making changes.
+    //Build out the answer object to feed to the markdown generator
+    let mockData = {
+        name: 'Warren Rowland',
+        title: 'Run Buddies',
+        description: 'An app to help you run better!',
+        installation: [ 'GitHub Pages Link' ],
+        languages: [ 'HTML', 'CSS' ],
+        license: [ 'MIT' ],
+        contributions: true,
+        tests: true,
+        github: 'rolanduwxcc',
+        email: 'rolanduwxcc@gmail.com',
+        date: '2020'
+    };
+    const output = generateMarkdown(mockData);
+    writeToFile('./READMEexample.md',output);
+};
+
+// //Function call to test app
+// //Uncomment this call and comment the init() call below to test changes
+// test();
+
 // Function call to initialize app
-// init();
-const output = generateMarkdown(mockData);
-writeToFile('./READMEexample.md',output);
+init();
+
